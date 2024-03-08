@@ -32,13 +32,12 @@ const UserView = () => {
           {records.map((record, i) => (
             <tr key={i}>
               <td>{record.user_id}</td>
-              <td>{record.first_name}</td>
-              <td>{record.last_name}</td>
+              <td>{record.user_name}</td>
               <td>{record.email}</td>
-              <td className="hidetext">{record.pass_word}</td>
-              <td>{record.created_date}</td>
-              <td>{record.is_active}</td>
-              <td>{record.last_login}</td>
+              <td class="hidetext">{record.password}</td>
+              <td>{record.firstname}</td>
+              <td>{record.lastname}</td>
+              <td>{record.address}</td>
             </tr>
           ))}
         </tbody>
