@@ -7,6 +7,7 @@ export const RegisterForm = (props) => {
   const [pass, setPass] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
@@ -15,10 +16,12 @@ export const RegisterForm = (props) => {
     let success = true;
     let errorText = "";
     const payload = JSON.stringify({
-      first_name: firstName,
-      last_name: lastName,
+      firstname: firstName,
+      lastname: lastName,
+      user_name: email,
       email: email,
-      pass_word: pass,
+      password: pass,
+      address: address,
     });
     try {
       fetch(process.env.REACT_APP_API_URL_BASE + "/users/", {
@@ -45,7 +48,9 @@ export const RegisterForm = (props) => {
               for (const msg in data.errors[err])
                 errorText += data.errors[err][msg];
             }
-            console.log(errorText);
+            //log the error to the console and show what is missing, be specific
+            console.log(errorText + " - " + JSON.stringify(data.errors));
+
             setError(errorText);
           }
         })
@@ -58,6 +63,7 @@ export const RegisterForm = (props) => {
         setFirstName("");
         setLastName("");
         setPass("");
+        setAddress("");
         setError("Registered Successfully!");
       } else {
         setError(errorText);
@@ -111,6 +117,16 @@ export const RegisterForm = (props) => {
           placeholder="*********"
           id="password"
           name="password"
+        />
+        <label htmlFor="address">Adress</label>
+        <input
+          required
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          type="text"
+          placeholder="1234 Main St"
+          id="address"
+          name="address"
         />
         <button type="submit">Register</button>
         <p className="text-success">

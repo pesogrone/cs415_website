@@ -108,8 +108,8 @@ function App() {
             </Link>
           </li>
           <li className="nav-item-center2">
-            <Link to="/" className="nav-link">
-              Outdoor Gear
+            <Link to="/users" className="nav-link">
+              UserView
             </Link>
           </li>
           <li className="nav-item-center2">
