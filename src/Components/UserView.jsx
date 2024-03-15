@@ -15,7 +15,7 @@ const UserView = () => {
         setRecords(data.users);
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [navigate]);
 
   return (
     <div>
